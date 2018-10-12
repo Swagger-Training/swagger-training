@@ -1,0 +1,281 @@
+swagger: '2.0'
+
+info:
+  title: Policies API
+  version: '1.0.0'
+
+basePath: /policies-api/1
+
+consumes:
+    - application/json
+produces:
+    - application/json
+    - text/plain
+
+paths:
+    /policies:
+        get:
+            summary: Gets all policies
+            description: Gets policies by given parameters
+            parameters:
+                -   name: audience
+                    in: query
+                    type: string
+                    description: Query policies by audience
+                -   name: policyType
+                    in: query
+                    type: string
+                    description: Query policies by policy type
+                -   name: mandatory
+                    in: query
+                    type: boolean
+                    description: Query mandatory policies
+            responses:
+                200:
+                    description: Successfully retreived policies
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/policy'
+                    examples:
+                        application/json:
+                            -   title: Privacy Policy International
+                                policyType: privacy
+                                audience: International
+                                defaultLanguage: en
+                                mandatory: true
+                                translations:
+                                    -   title: سياسة الخصوصية الخاصة بريد بول
+                                        releaseDate: 2017-04-21T11:50:37.358Z
+                                        language: ar
+                                        version: 1
+                                    -   title: Privacy Policy,
+                                        releaseDate: 2017-10-27T07:33:29.725Z
+                                        language: en
+                                        version: 2
+
+        post:
+            summary: New policy
+            description: Creates a new policy
+            parameters:
+                -   name: body
+                    in: body
+                    schema:
+                        $ref: '#/definitions/policy'
+                    description: A policy object.
+            responses:
+                201:
+                    description: Successully created policy
+                    schema:
+                        $ref: '#/definitions/policy'
+                    examples:
+                        application/json:
+                            title: Privacy Policy International
+                            policyType: privacy
+                            audience: International
+                            defaultLanguage: en
+                            mandatory: true
+                            translations:
+                                -   title: سياسة الخصوصية الخاصة بريد بول
+                                    releaseDate: 2017-04-21T11:50:37.358Z
+                                    language: ar
+                                    version: 1
+                                -   title: Privacy Policy,
+                                    releaseDate: 2017-10-27T07:33:29.725Z
+                                    language: en
+                                    version: 2
+
+    /policies/{policyId}:
+        get:
+            summary: Gets a policy
+            description: Gets policy by id
+            parameters:
+                -   name: policyId
+                    in: path
+                    type: string
+                    description: A policy id
+                    required: true
+            responses:
+                200:
+                    description: Found policy
+                    schema:
+                        $ref: '#/definitions/policy'
+                    examples:
+                        application/json:
+                            title: Privacy Policy International
+                            policyType: privacy
+                            audience: International
+                            defaultLanguage: en
+                            mandatory: true
+                            translations:
+                                -   title: سياسة الخصوصية الخاصة بريد بول
+                                    releaseDate: 2017-04-21T11:50:37.358Z
+                                    language: ar
+                                    version: 1
+                                -   title: Privacy Policy,
+                                    releaseDate: 2017-10-27T07:33:29.725Z
+                                    language: en
+                                    version: 2
+                404:
+                    description: Not found
+                    schema:
+                        $ref: '#/definitions/error'
+                    examples:
+                        text/plain:
+                            policy not found
+
+        put:
+            summary: Creates or updates a policy
+            description: Creates or updates a policy by id
+            parameters:
+                -   name: policyId
+                    in: path
+                    type: string
+                    description: A policy id
+                    required: true
+                -   name: body
+                    in: body
+                    schema:
+                        $ref: '#/definitions/policy'
+                    description: A policy object.
+            responses:
+                200:
+                    description: Successully updated policy
+                    schema:
+                        $ref: '#/definitions/policy'
+                    examples:
+                        application/json:
+                            title: Privacy Policy International
+                            policyType: privacy
+                            audience: International
+                            defaultLanguage: en
+                            mandatory: true
+                            translations:
+                                -   title: سياسة الخصوصية الخاصة بريد بول
+                                    releaseDate: 2017-04-21T11:50:37.358Z
+                                    language: ar
+                                    version: 1
+                                -   title: Privacy Policy,
+                                    releaseDate: 2017-10-27T07:33:29.725Z
+                                    language: en
+                                    version: 2
+        delete:
+            summary: Deletes a policy
+            description: Deletes a policy by id
+            parameters:
+                -   name: policyId
+                    in: path
+                    type: string
+                    description: A policy id
+                    required: true
+            responses:
+                204:
+                    description: Policy successfully deleted
+                404:
+                    description: Not found
+                    schema:
+                        $ref: '#/definitions/error'
+                    examples:
+                        text/plain:
+                            policy not found
+
+definitions:
+    policy:
+        type: object
+        description: A policy
+        properties:
+            id:
+                type: string
+                format: uuid
+            title:
+                type: string
+                description: The title of the policy
+                maxLength: 50
+            policyType:
+                $ref: '#/definitions/policyType'
+            audience:
+                $ref: '#/definitions/audience'
+            defaultLanguage:
+                $ref: '#/definitions/language'
+            mandatory:
+                type: boolean
+                default: false
+            translations:
+                type: array
+                items:
+                    $ref: '#/definitions/translation'
+        required:
+            - id
+            - title
+            - policyType
+        example:
+            id: 1b35ca9f-8413-4428-aa46-57ed68ea616a
+            title: Privacy Policy International
+            policyType: privacy
+            audience: International
+            defaultLanguage: en
+            mandatory: true
+            translations:
+                -   title: سياسة الخصوصية الخاصة بريد بول
+                    releaseDate: 2017-04-21T11:50:37.358Z
+                    language: ar
+                    version: 1
+                -   title: Privacy Policy,
+                    releaseDate: 2017-10-27T07:33:29.725Z
+                    language: en
+                    version: 2
+
+    translation:
+        type: object
+        description: A translation for policy
+        properties:
+            title:
+                type: string
+                description: The localized title of the policyType
+            releaseDate:
+                type: string
+                format: date-time
+                description: The release date of the translation revision
+            language:
+                $ref: '#/definitions/language'
+            version:
+                type: integer
+                description: the major version of the policy translations
+        required:
+            - title
+            - releaseDate
+            - language
+            - version
+        example:
+            title: Privacy Policy,
+            releaseDate: 2017-10-27T07:33:29.725Z
+            language: en
+            version: 2
+
+    policyType:
+        type: string
+        description: A valid policy type
+        enum:
+            - privacy
+            - cookie
+            - terms
+
+    audience:
+        type: string
+        description: The target audience
+        enum:
+            - regional
+            - international
+        default: international
+
+    language:
+        type: string
+        description: A policy language
+        minLength: 2
+        maxLength: 2
+        default: en
+        example: de
+
+    error:
+        type: string
+        description: An error message

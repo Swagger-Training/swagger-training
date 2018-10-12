@@ -1,0 +1,113 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"description": "A policy",
+	"properties": {
+		"id": {
+			"type": "string",
+			"format": "uuid"
+		},
+		"title": {
+			"type": "string",
+			"description": "The title of the policy",
+			"maxLength": 50
+		},
+		"policyType": {
+			"type": "string",
+			"description": "A valid policy type",
+			"enum": [
+				"privacy",
+				"cookie",
+				"terms"
+			]
+		},
+		"audience": {
+			"type": "string",
+			"description": "The target audience",
+			"enum": [
+				"regional",
+				"international"
+			],
+			"default": "international"
+		},
+		"defaultLanguage": {
+			"$ref": "#/definitions/language"
+		},
+		"mandatory": {
+			"type": "boolean",
+			"default": false
+		},
+		"translations": {
+            "patternProperties": {
+                "^[a-z]{2}$": {
+                      "$ref": "#/definitions/translation"
+                }
+            },
+            "additionalProperties": false
+		}
+	},
+	"required": [
+		"id",
+		"title",
+		"policyType"
+	],
+	"example": {
+		"id": "1b35ca9f-8413-4428-aa46-57ed68ea616a",
+		"title": "Privacy Policy International",
+		"policyType": "privacy",
+		"audience": "International",
+		"defaultLanguage": "en",
+		"mandatory": true,
+		"translations": [
+			{
+				"title": "سياسة الخصوصية الخاصة بريد بول",
+				"releaseDate": "2017-04-21T11:50:37.358Z",
+				"language": "ar",
+				"version": 1
+			},
+			{
+				"title": "Privacy Policy,",
+				"releaseDate": "2017-10-27T07:33:29.725Z",
+				"language": "en",
+				"version": 2
+			}
+		]
+	},
+	"definitions": {
+		"translation": {
+			"type": "object",
+			"description": "A translation for policy",
+			"properties": {
+				"title": {
+					"type": "string",
+					"description": "The localized title of the policyType"
+				},
+				"releaseDate": {
+					"type": "string",
+					"format": "date-time",
+					"description": "The release date of the translation revision"
+				},
+				"language": {
+					"$ref": "#/definitions/language"
+				},
+				"version": {
+					"type": "integer",
+					"description": "the major version of the policy translations"
+				}
+			},
+			"required": [
+				"title",
+				"releaseDate",
+				"version"
+			]
+		},
+		"language": {
+			"type": "string",
+			"description": "A policy language",
+			"minLength": 2,
+			"maxLength": 2,
+			"default": "en",
+			"example": "de"
+		}
+	}
+}

@@ -1,0 +1,85 @@
+swagger: '2.0'
+
+info:
+  title: Policies API
+  version: '1.0.0'
+
+basePath: /policies-api/1
+
+consumes:
+    - application/json
+produces:
+    - application/json
+    - text/plain
+
+paths:
+    /policies:
+        get:
+            summary: Gets all policies
+            description: Gets policies by given parameters
+            parameters:
+                -   name: policyType
+                    in: query
+                    type: string
+                    description: Query policies by policy type
+            responses:
+                200:
+                    description: Successfully retreived policies
+                    schema:
+                        type: array
+                        items:
+                            type: object
+                            description: A policy
+                            properties:
+                                id:
+                                    type: string
+                                    description: An unique id
+                                title:
+                                    type: string
+                                    description: The title of the policy
+                                policyType:
+                                    type: string
+                                    description: A valid policy type
+                                audience:
+                                    type: string
+                                    description: The target audience
+                                defaultLanguage:
+                                    type: string
+                                    description: A policy language
+                                mandatory:
+                                    type: boolean
+                                translations:
+                                    type: array
+                                    items:
+                                        type: object
+                                        description: A translation for policy
+                                        properties:
+                                            title:
+                                                type: string
+                                                description: The localized title of the policyType
+                                            releaseDate:
+                                                type: string
+                                                format: date-time
+                                                description: The release date of the translation revision
+                                            language:
+                                                type: string
+                                                description: A policy language
+                                            version:
+                                                type: integer
+                                                description: the major version of the policy translations
+                    examples:
+                        application/json:
+                            -   title: Privacy Policy International
+                                policyType: privacy
+                                audience: International
+                                defaultLanguage: en
+                                mandatory: true
+                                translations:
+                                    -   title: سياسة الخصوصية الخاصة بريد بول
+                                        releaseDate: 2017-04-21T11:50:37.358Z
+                                        language: ar
+                                        version: 1
+                                    -   title: Privacy Policy,
+                                        releaseDate: 2017-10-27T07:33:29.725Z
+                                        language: en
+                                        version: 2

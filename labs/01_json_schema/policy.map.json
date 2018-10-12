@@ -1,0 +1,40 @@
+{
+    "id": "1b35ca9f-8413-4428-aa46-57ed68ea616a",
+    "title": "Privacy Policy International",
+    "audience": "international",
+    "defaultLanguage": "en",
+    "policyType": "privacy",
+    "mandatory": true,
+    "translations": {
+        "ar": {
+            "title": "سياسة الخصوصية الخاصة بريد بول",
+            "releaseDate": "2017-04-21T11:50:37.358Z",
+            "version": 1
+        },
+        "en": {
+            "title": "Privacy Policy",
+            "releaseDate": "2017-10-27T07:33:29.725Z",
+            "version": 2
+        },
+        "fr": {
+            "releaseDate": "2017-10-24T16:18:58.746Z",
+            "title": "Politique de confidentialité",
+            "version": 2
+        },
+        "zh": {
+            "title": "紅牛隱私權政策",
+            "releaseDate": "2017-04-21T08:36:54.942Z",
+            "version": 1
+        },
+        "es": {
+            "title": "Política de Privacidad",
+            "releaseDate": "2016-11-07T13:37:01.452Z",
+            "version": 2
+        },
+        "de": {
+            "title": "Datenschutzrichtlinie",
+            "releaseDate": "2017-08-04T13:32:10.223Z",
+            "version": 2
+        }
+    }
+}

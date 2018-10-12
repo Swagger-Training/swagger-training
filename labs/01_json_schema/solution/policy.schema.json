@@ -1,0 +1,92 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"description": "A policy",
+	"properties": {
+		"id": {
+			"type": "string",
+			"format": "uuid"
+		},
+		"title": {
+			"type": "string",
+			"description": "The title of the policy",
+			"maxLength": 50
+		},
+		"policyType": {
+			"type": "string",
+			"description": "A valid policy type",
+			"enum": [
+				"privacy",
+				"cookie",
+				"terms"
+			]
+		},
+		"audience": {
+			"type": "string",
+			"description": "The target audience",
+			"enum": [
+				"regional",
+				"international"
+			],
+			"default": "international"
+		},
+		"defaultLanguage": {
+			"$ref": "#/definitions/language"
+		},
+		"mandatory": {
+			"type": "boolean",
+			"default": false
+		},
+		"translations": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/translation"
+			}
+		}
+	},
+	"required": [
+		"id",
+		"title",
+		"policyType"
+	],
+
+	"definitions": {
+		"translation": {
+			"type": "object",
+			"description": "A translation for policy",
+			"properties": {
+				"title": {
+					"type": "string",
+					"description": "The localized title of the policyType"
+				},
+				"releaseDate": {
+					"type": "string",
+					"format": "date-time",
+					"description": "The release date of the translation revision"
+				},
+				"language": {
+					"$ref": "#/definitions/language"
+				},
+				"version": {
+					"type": "integer",
+					"description": "the major version of the policy translations"
+				}
+			},
+			"required": [
+				"title",
+				"releaseDate",
+				"language",
+				"version"
+			]
+		},
+
+		"language": {
+			"type": "string",
+			"description": "A policy language",
+			"minLength": 2,
+			"maxLength": 2,
+			"default": "en",
+			"example": "de"
+		}
+	}
+}
