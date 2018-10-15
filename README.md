@@ -9,7 +9,7 @@
 ### YAML
 
 * [Specification](http://yaml.org/)
-* [JSON-YAML Comparisson](http://sangsoonam.github.io/2017/03/13/yaml-vs-json.html)
+* [JSON-YAML Comparison](http://sangsoonam.github.io/2017/03/13/yaml-vs-json.html)
 * [YAML to JSON Converter](https://codebeautify.org/yaml-to-json-xml-csv)
 
 ### JSON Schema
