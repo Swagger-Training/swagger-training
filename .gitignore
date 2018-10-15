@@ -1,1 +1,5 @@
 src/images
+samples/hello/node_modules
+codegen
+samples/swagger-editor
+samples/swaggerui
