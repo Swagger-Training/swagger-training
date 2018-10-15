@@ -9,6 +9,8 @@
 ### YAML
 
 * [Specification](http://yaml.org/)
+* [JSON-YAML Comparisson](http://sangsoonam.github.io/2017/03/13/yaml-vs-json.html)
+* [YAML to JSON Converter](https://codebeautify.org/yaml-to-json-xml-csv)
 
 ### JSON Schema
 
@@ -16,7 +18,7 @@
 * [Understanding JSON Schema](https://json-schema.org/understanding-json-schema/)
 * [Validator](https://www.jsonschemavalidator.net/)
 * [Generator](https://www.jsonschema.net/)
-* [AJV - Command Line Tool](https://github.com/epoberezkin/ajv)
+* [AJV - Command Line Tool](https://ajv.js.org/)
 
 ### Swagger Specification
 
@@ -27,7 +29,9 @@
 ### Swagger Tools
 
 * [Swagger Editor](https://editor.swagger.io/)
+* [Swagger UI](https://swagger.io/tools/swagger-ui/)
 * [Swagger Hub](https://app.swaggerhub.com/home)
+* [Swagger Code Gen](https://github.com/swagger-api/swagger-codegen)
 
 ## Labs
 
