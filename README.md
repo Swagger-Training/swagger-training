@@ -24,7 +24,8 @@
 
 * [OpenAPI Spec 2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)
 * [OpenAPI Spec 3.0.1](https://swagger.io/specification/)
-* [OpenApi Map](http://openapi-map.apihandyman.io/?version=2.0)
+* [OpenAPI Map](http://openapi-map.apihandyman.io/?version=2.0)
+* [Visual Guide OpenAPI 2 to 3 ](https://blog.readme.io/an-example-filled-guide-to-swagger-3-2/)
 
 ### Swagger Tools
 
