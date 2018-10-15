@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://3kraft.com/swagger-training/address.schema.json",
+    "title": "Address",
+    "description": "An address",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "Name",
+            "type": "string",
+            "maxLength": 200
+        },
+        "street": {
+            "description": "Address",
+            "type": "string",
+            "maxLength": 200
+        },
+        "zip": {
+            "description": "ZIP code",
+            "type": "string",
+            "maxLength": 10
+        },
+        "city": {
+            "description": "City",
+            "type": "string",
+            "maxLength": 200
+        },
+        "country": {
+            "description": "ISO country code",
+            "type": "string",
+            "maxLength": 2,
+            "minlength": 2
+        }
+    },
+    "required": [
+        "name", "street", "zip", "city", "country"
+    ]
+}

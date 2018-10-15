@@ -1,0 +1,27 @@
+{
+    "stringValue": "value",
+    "numberValue": 0,
+    "booleanValue": true,
+    "nullValue": null,
+
+    "object": {
+        "stringProperty": "value",
+        "intProperty": 0,
+        "boolProperty": true
+    },
+
+    "intArray": [0, 1, 2, 3, 5],
+    "stringArray": ["a", "b", "c"],
+
+    "objectArray": [{
+            "stringProperty": "value",
+            "intProperty": 0,
+            "boolProperty": true
+        },
+        {
+            "stringProperty": "xxx",
+            "intProperty": 1,
+            "boolProperty": false
+        }
+    ]
+}

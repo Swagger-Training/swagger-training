@@ -1,0 +1,19 @@
+{
+    "name": "Jan Illetschko",
+    "email": "jan.illetschko@3kraft.com",
+    "addresses": [{
+            "name": "3kraft Office",
+            "street": "Wasagasse 26/2",
+            "city": "Vienna",
+            "zip": "1090",
+            "country": "AT"
+        },
+        {
+            "name": "Home",
+            "street": "Blaselgasse 14",
+            "city": "Vienna",
+            "zip": "1180",
+            "country": "AT"
+        }
+    ]
+}
